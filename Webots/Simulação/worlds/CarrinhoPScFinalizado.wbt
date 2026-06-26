@@ -1,0 +1,662 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+  basicTimeStep 12
+}
+Viewpoint {
+  orientation -0.36952911941048455 -0.010612665903333936 0.9291585447221243 3.194957451775856
+  position 0.7222702264203611 0.09621236213777601 0.692839479017933
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  castShadows FALSE
+}
+RectangleArena {
+}
+Robot {
+  translation 0 0 0.1
+  children [
+    DEF Rodizio Solid {
+      translation -0.031 -0.0644 -0.033
+      rotation 0 0 1 1.5708
+      children [
+        DEF rodizio Pose {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.298039 0.298039 0.298039
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/Rodizio/roda.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+      boundingObject USE rodizio
+      physics Physics {
+      }
+    }
+    DEF Roda_D HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.0998 0.0593 -0.018
+      }
+      device [
+        RotationalMotor {
+          name "roda_direita"
+        }
+      ]
+      endPoint DEF roda_D Solid {
+        translation -2.55919658243009e-08 -5.8077816188217835e-08 -7.702098155266957e-07
+        rotation 1 0 0 0
+        children [
+          DEF roda_d Pose {
+            translation -0.0998 0.0593 -0.018
+            rotation 0 0 1 3.14159
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0 0 0
+                  metalness 0
+                }
+                geometry Mesh {
+                  url [
+                    "../meshes/PecasGerais/roda_d66.dae"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+        name "roda_D"
+        boundingObject USE roda_d
+        physics Physics {
+        }
+      }
+    }
+    DEF Roda_E HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.0637 0.0593 -0.018
+      }
+      device [
+        RotationalMotor {
+          name "roda_esquerda"
+        }
+      ]
+      endPoint DEF roda_E Solid {
+        translation -1.2875747183727082e-07 -2.2123541173341144e-07 3.1281614019697257e-06
+        rotation 1 0 0 0
+        children [
+          DEF roda_e Pose {
+            translation 0.0637 0.0593 -0.018
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0 0 0
+                  metalness 0
+                }
+                geometry Mesh {
+                  url [
+                    "../meshes/PecasGerais/roda_d66.dae"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+        name "roda_E"
+        boundingObject USE roda_e
+        physics Physics {
+        }
+      }
+    }
+    DistanceSensor {
+      translation -0.071 -0.07 0.0173
+      rotation 0 0 1 -2.3561953071795863
+      children [
+        Pose {
+          translation 0 -0.002 0
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0.333333 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/ultrasson-hc-sr04.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+      name "ds_ultrassom3"
+    }
+    DistanceSensor {
+      translation -0.019 -0.0964 0.0173
+      rotation 0 0 1 -1.5707953071795862
+      children [
+        Pose {
+          translation 0 -0.002 0
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0.333333 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/ultrasson-hc-sr04.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+      name "ds_ultrassom2"
+    }
+    DistanceSensor {
+      translation 0.034 -0.0716 0.0173
+      rotation 0 0 1 -0.785395307179586
+      children [
+        Pose {
+          translation 0 -0.002 0
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0.333333 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/ultrasson-hc-sr04.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+      name "ds_ultrassom1"
+    }
+    DEF Colisao Group {
+      children [
+        Pose {
+          translation -0.0176 0.056 0.05
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.423529 0.211765 0
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/placasuperior.dae"
+                ]
+              }
+            }
+          ]
+        }
+        Pose {
+          rotation 0.5773509358554485 0.5773489358556708 0.5773509358554485 2.0944
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.423529 0.211765 0
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/basemdf_rodizio_branco.dae"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+    DEF SemColisao Group {
+      children [
+        Pose {
+          translation -0.0091 -0.0644 -0.033
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.670588 0.670588 0.670588
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/Rodizio/parafuso.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.021 -0.077 -0.01
+          rotation -0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.627451 0.627451 0.627451
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/Rodizio/rodizio pc2.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.0212 -0.0768 -0.01
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.466667 0.466667 0.698039
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/Rodizio/rodizio pc1.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.0634 0.0525 -0.018
+          rotation 0.5773519358547601 -0.5773489358550934 -0.5773499358549823 -2.094395307179586
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0.490196 0.129412
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/acopladormotor.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.0274 0.0665 -0.018
+          rotation 0.577349935856137 0.5773509358560258 -0.577349935856137 2.09439
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0.490196 0.129412
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/acopladormotor.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.084 0.0962 -0.018
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 1 0.498039
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/motor-redutor.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.048 0.0962 -0.018
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 1 0.498039
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/motor-redutor.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.018 0.064 0.15
+          rotation 0 1 0 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.545098 0.545098 0.545098
+                transparency 0.5
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/Copo/cup_escala_2,5.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.018 0.063 0.054
+          rotation 1 0 0 -1.5707953071795862
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.682353 0.682353 0.682353
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/LED/led5mm.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.066 -0.065 0.0184
+          rotation 0 0 1 -0.785395307179586
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.596078 0.298039 0
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/suporteultrassom.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.0188 -0.09 0.0184
+          rotation 0 0 -1 -5.307179586466759e-06
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.596078 0.298039 0
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/suporteultrassom.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.0297 -0.0666 0.0184
+          rotation 0 0 1 0.7854003061004253
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.596078 0.298039 0
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/suporteultrassom.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.0682 0.08 -0.015
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.596078 0.298039 0
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/suporte_motor.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.0383 0.08 -0.015
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.596078 0.298039 0
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/suporte_motor.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.02 0.03 1.70388e-07
+          rotation -0.577349935856137 0.5773509358560258 -0.577349935856137 2.09439
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.356863 0.356863 0.533333
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/suportepilhasaa.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.07 0.04 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.231373 0.0235294 0.647059
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/protoboard.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.013 0.11 -2.03924e-08
+          rotation 1 0 0 -1.5707953071795862
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0 0
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/ponteh_l298.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.093 -0.0395 0.0017
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.160784 0.172549 0.8
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/arduino_uno_r3.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.0438 0.1187 -0.0072
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.443137 0.443137 0.666667
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/chave_gangorra-kcd1-101.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.0565 0.1082 -0.006
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.439216 0.439216 0.439216
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/barra_rosca.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.0179 0.0082 -0.006
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.439216 0.439216 0.439216
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/barra_rosca.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.0205 0.1082 -0.006
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.439216 0.439216 0.439216
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../meshes/PecasGerais/barra_rosca.dae"
+                ]
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  name "CarrinhoPS"
+  boundingObject Pose {
+    translation -0.018 0.018 0.024
+    children [
+      Box {
+        size 0.15 0.221 0.06
+      }
+    ]
+  }
+  physics Physics {
+  }
+  controller "CarrinhoPSc"
+}
+Solid {
+  translation 0 -0.37 0.09
+  children [
+    DEF obstaculo Pose {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.333333 0 0
+            metalness 0
+          }
+          geometry Box {
+            size 0.5 0.1 0.1
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject USE obstaculo
+  physics Physics {
+  }
+}
